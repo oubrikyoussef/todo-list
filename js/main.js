@@ -36,13 +36,18 @@ function todoCreation(event) {
 }
 function createTodo(parent, toDo , id) {
     const li = document.createElement('li');
-    li.innerHTML = `
-        <h4 class="box-1-heading fz-14">${toDo}</h4>
-        <div class="icons flx-ic">
-            <i class="fa-solid fa-check done c-g main-tr"></i>
-            <i class="fa-regular fa-trash-can delete c-r main-tr"></i>
-        </div>
-    `;
+    const h4 = document.createElement('h4');
+    h4.innerText = toDo;
+    h4.classList.add("box-1-heading","fz-14");
+    li.append(h4);
+    const div = document.createElement('div');
+    div.classList.add("icons","flx-ic");
+    const doneIcone = document.createElement('i');
+    doneIcone.classList.add("fa-solid","fa-check","done","c-g","main-tr");
+    const deleteIcone = document.createElement('i');
+    deleteIcone.classList.add("fa-regular","fa-trash-can","delete","c-r","main-tr");
+    div.append(doneIcone,deleteIcone);
+    li.append(div)
     li.classList.add("box", "flx-sb-c", "pd-block-8", "border-eee-bt");
     li.setAttribute("id",id)
     parent.prepend(li);
